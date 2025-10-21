@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostila Completa de Recursos UI/UX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        'primary-light': '#7A79E5',
+                        'primary-dark': '#4B4AC7'
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+    <style>
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .toast-animation { animation: slideIn 0.3s ease-out; }
+        .modal-animation { animation: fadeIn 0.3s ease-out; }
+        .spinner { animation: spin 1s linear infinite; }
+
+        /* Slider styles */
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #5D5CDE;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #5D5CDE;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Header -->
+    <header class="bg-primary text-white p-6 shadow-lg">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-3xl font-bold mb-2">📚 Apostila Completa de Recursos UI/UX</h1>
+            <p class="text-white">Guia completo com 31 componentes essenciais de interface</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-100 dark:bg-gray-800 p-4 sticky top-0 z-40 shadow-md">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-wrap gap-2 justify-center">
+                <button onclick="scrollToSection('toast')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Toast</button>
+                <button onclick="scrollToSection('modal')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Modal</button>
+                <button onclick="scrollToSection('dropdown')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Dropdown</button>
+                <button onclick="scrollToSection('tooltip')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Tooltip</button>
+                <button onclick="scrollToSection('accordion')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Accordion</button>
+                <button onclick="scrollToSection('tabs')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Tabs</button>
+                <button onclick="scrollToSection('cards')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Cards</button>
+                <button onclick="scrollToSection('alerts')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Alerts</button>
+                <button onclick="scrollToSection('progress')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Progress</button>
+                <button onclick="scrollToSection('loading')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Loading</button>
+                <button onclick="scrollToSection('breadcrumbs')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Breadcrumbs</button>
+                <button onclick="scrollToSection('pagination')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Pagination</button>
+                <button onclick="scrollToSection('toggle')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Toggle</button>
+                <button onclick="scrollToSection('slider')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Slider</button>
+                <button onclick="scrollToSection('badges')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Badges</button>
+                <button onclick="scrollToSection('stepper')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Stepper</button>
+                <button onclick="scrollToSection('rating')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Rating</button>
+                <button onclick="scrollToSection('timeline')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Timeline</button>
+                <button onclick="scrollToSection('carousel')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Carousel</button>
+                <button onclick="scrollToSection('search')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Search</button>
+                <button onclick="scrollToSection('sidebar')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Sidebar</button>
+                <button onclick="scrollToSection('hamburger')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Hamburger</button>
+                <button onclick="scrollToSection('radio')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Radio</button>
+                <button onclick="scrollToSection('checkbox')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Checkbox</button>
+                <button onclick="scrollToSection('combobox')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Combobox</button>
+                <button onclick="scrollToSection('multiselect')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Multiselect</button>
+                <button onclick="scrollToSection('avatar')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Avatar</button>
+                <button onclick="scrollToSection('inputs')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Inputs</button>
+                <button onclick="scrollToSection('tables')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Tables</button>
+                <button onclick="scrollToSection('menus')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Menus</button>
+                <button onclick="scrollToSection('chips')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">Chips</button>
+				<button onclick="scrollToSection('resources')" class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-primary-dark transition-colors">+ Recursos e Bibliotecas de Componentes</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6 space-y-12">
+
+        <!-- Toast/Notification -->
+        <section id="toast" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🍞 Toast/Notification</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Mensagens temporárias que aparecem na tela para informar o usuário sobre ações realizadas,
+                        erros ou avisos importantes. Geralmente aparecem no canto da tela e desaparecem automaticamente.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Confirmar ações (salvamento, exclusão)</li>
+                        <li>Mostrar erros não críticos</li>
+                        <li>Avisos temporários</li>
+                        <li>Status de carregamento</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-2">
+                        <button onclick="showToast('success', 'Sucesso!', 'Operação realizada com sucesso')"
+                                class="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors">
+                            Toast de Sucesso
+                        </button>
+                        <button onclick="showToast('error', 'Erro!', 'Algo deu errado')"
+                                class="w-full bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                            Toast de Erro
+                        </button>
+                        <button onclick="showToast('warning', 'Atenção!', 'Verifique os dados')"
+                                class="w-full bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition-colors">
+                            Toast de Aviso
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <section id="modal" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🪟 Modal</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Janela sobreposta que aparece sobre o conteúdo principal, exigindo interação do usuário
+                        antes de retornar à aplicação. Bloqueia a interação com o resto da página.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Confirmações importantes</li>
+                        <li>Formulários de criação/edição</li>
+                        <li>Visualização de imagens</li>
+                        <li>Avisos críticos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-2">
+                        <button onclick="showModal('confirm')"
+                                class="w-full bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
+                            Modal de Confirmação
+                        </button>
+                        <button onclick="showModal('form')"
+                                class="w-full bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">
+                            Modal com Formulário
+                        </button>
+                        <button onclick="showModal('info')"
+                                class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors">
+                            Modal Informativo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dropdown -->
+        <section id="dropdown" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📋 Dropdown</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Menu que se expande para mostrar uma lista de opções quando clicado.
+                        Economiza espaço na interface mostrando opções apenas quando necessário.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Menus de navegação</li>
+                        <li>Seleção de opções</li>
+                        <li>Ações contextuais</li>
+                        <li>Filtros e configurações</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="relative">
+                        <button id="dropdownBtn" onclick="toggleDropdown()"
+                                class="w-full bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors flex items-center justify-between">
+                            Selecione uma opção
+                            <span class="ml-2">▼</span>
+                        </button>
+                        <div id="dropdownMenu" class="hidden absolute top-full left-0 w-full bg-white dark:bg-gray-700 border rounded shadow-lg mt-1 z-10">
+                            <button onclick="selectOption('Opção 1')" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Opção 1</button>
+                            <button onclick="selectOption('Opção 2')" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Opção 2</button>
+                            <button onclick="selectOption('Opção 3')" class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Opção 3</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tooltip -->
+        <section id="tooltip" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">💭 Tooltip</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Pequena caixa de texto que aparece quando o usuário passa o mouse sobre um elemento,
+                        fornecendo informações adicionais ou explicações.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Explicar ícones ou botões</li>
+                        <li>Fornecer informações extras</li>
+                        <li>Ajuda contextual</li>
+                        <li>Definições de termos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div class="relative inline-block">
+                            <button class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors tooltip-trigger"
+                                    data-tooltip="Este é um botão com tooltip">
+                                Passe o mouse aqui
+                            </button>
+                        </div>
+                        <div class="relative inline-block">
+                            <span class="text-primary underline cursor-help tooltip-trigger"
+                                  data-tooltip="API significa Application Programming Interface">
+                                API
+                            </span>
+                        </div>
+                        <div class="relative inline-block">
+                            <button class="bg-gray-500 text-white p-2 rounded tooltip-trigger"
+                                    data-tooltip="Configurações do sistema">
+                                ⚙️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Accordion -->
+        <section id="accordion" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📁 Accordion</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Componente que permite mostrar/ocultar seções de conteúdo de forma organizada.
+                        Apenas uma seção fica visível por vez, economizando espaço na tela.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>FAQs (Perguntas Frequentes)</li>
+                        <li>Organizar grandes quantidades de informação</li>
+                        <li>Menus de navegação complexos</li>
+                        <li>Configurações categorizadas</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-2">
+                        <div class="border rounded">
+                            <button onclick="toggleAccordion('acc1')" class="w-full text-left px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex justify-between items-center">
+                                O que é UX Design?
+                                <span id="acc1-icon">+</span>
+                            </button>
+                            <div id="acc1" class="hidden px-4 py-3 border-t">
+                                <p class="text-gray-700 dark:text-gray-300">UX Design é o processo de criar produtos que proporcionam experiências significativas e relevantes aos usuários.</p>
+                            </div>
+                        </div>
+                        <div class="border rounded">
+                            <button onclick="toggleAccordion('acc2')" class="w-full text-left px-4 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors flex justify-between items-center">
+                                Como melhorar a usabilidade?
+                                <span id="acc2-icon">+</span>
+                            </button>
+                            <div id="acc2" class="hidden px-4 py-3 border-t">
+                                <p class="text-gray-700 dark:text-gray-300">Foque na simplicidade, teste com usuários reais, mantenha consistência e forneça feedback claro.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabs -->
+        <section id="tabs" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📑 Tabs</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Componente que organiza conteúdo em painéis separados, permitindo alternar entre
+                        diferentes visualizações no mesmo espaço da tela.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Organizar informações relacionadas</li>
+                        <li>Economizar espaço vertical</li>
+                        <li>Configurações por categoria</li>
+                        <li>Diferentes visualizações de dados</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div>
+                        <div class="flex border-b">
+                            <button onclick="showTab('tab1')" id="tab1-btn" class="px-4 py-2 border-b-2 border-primary text-primary font-semibold">Visão Geral</button>
+                            <button onclick="showTab('tab2')" id="tab2-btn" class="px-4 py-2 text-gray-600 hover:text-primary transition-colors">Detalhes</button>
+                            <button onclick="showTab('tab3')" id="tab3-btn" class="px-4 py-2 text-gray-600 hover:text-primary transition-colors">Configurações</button>
+                        </div>
+                        <div class="mt-4">
+                            <div id="tab1" class="tab-content">
+                                <h4 class="font-semibold mb-2">Visão Geral</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Esta é a visão geral do produto com informações principais.</p>
+                            </div>
+                            <div id="tab2" class="tab-content hidden">
+                                <h4 class="font-semibold mb-2">Detalhes</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Aqui estão os detalhes técnicos e especificações completas.</p>
+                            </div>
+                            <div id="tab3" class="tab-content hidden">
+                                <h4 class="font-semibold mb-2">Configurações</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Painel de configurações e preferências do usuário.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section id="cards" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🎴 Cards</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Contêineres visuais que agrupam informações relacionadas de forma organizada e
+                        visualmente atrativa, facilitando a escaneabilidade do conteúdo.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Listas de produtos ou artigos</li>
+                        <li>Dashboards e métricas</li>
+                        <li>Portfólios e galerias</li>
+                        <li>Resumos de informações</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="grid gap-4">
+                        <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md border hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-2">
+                                <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                <h4 class="font-semibold">Status do Sistema</h4>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Todos os serviços operando normalmente</p>
+                        </div>
+                        <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md border hover:shadow-lg transition-shadow">
+                            <h4 class="font-semibold mb-2">Vendas do Mês</h4>
+                            <p class="text-2xl font-bold text-primary">R$ 45.670</p>
+                            <p class="text-green-500 text-sm">↗ +15% vs mês anterior</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section id="alerts" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">⚠️ Alerts</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Mensagens de feedback importantes que permanecem visíveis até serem dispensadas
+                        pelo usuário. Diferem dos toasts por serem persistentes.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Erros críticos que precisam de ação</li>
+                        <li>Avisos importantes sobre o sistema</li>
+                        <li>Informações que não devem ser perdidas</li>
+                        <li>Status de conectividade</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-3">
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded flex justify-between items-center">
+                            <span>⚠️ Erro: Não foi possível salvar as alterações</span>
+                            <button class="text-red-700 hover:text-red-900">×</button>
+                        </div>
+                        <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded flex justify-between items-center">
+                            <span>⚡ Atenção: Manutenção programada em 1 hora</span>
+                            <button class="text-yellow-700 hover:text-yellow-900">×</button>
+                        </div>
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded flex justify-between items-center">
+                            <span>✅ Sucesso: Backup realizado com sucesso</span>
+                            <button class="text-green-700 hover:text-green-900">×</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Bar -->
+        <section id="progress" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📊 Progress Bar</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Indicador visual que mostra o progresso de uma tarefa ou processo,
+                        ajudando o usuário a entender quanto foi concluído e quanto resta.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Upload/download de arquivos</li>
+                        <li>Formulários de múltiplas etapas</li>
+                        <li>Processamento de dados</li>
+                        <li>Instalação de software</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Upload do arquivo</span>
+                                <span class="text-sm font-medium">45%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-sm font-medium">Processamento</span>
+                                <span class="text-sm font-medium">78%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        <button onclick="animateProgress()" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">
+                            Simular Progresso
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <section id="loading" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">⏳ Loading Spinner</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Indicador visual animado que informa ao usuário que um processo está em andamento,
+                        mantendo-o engajado durante tempos de espera.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Carregamento de páginas</li>
+                        <li>Requisições para APIs</li>
+                        <li>Processamento de dados</li>
+                        <li>Qualquer operação que demora mais que 1 segundo</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-6 h-6 border-2 border-primary border-t-transparent rounded-full spinner"></div>
+                            <span>Carregando...</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+                                <div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                                <div class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                            </div>
+                            <span>Processando...</span>
+                        </div>
+                        <button onclick="toggleLoading()" id="loadingBtn" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">
+                            Simular Loading
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breadcrumbs -->
+        <section id="breadcrumbs" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🗂️ Breadcrumbs</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Trilha de navegação que mostra ao usuário onde ele está dentro da hierarquia do site,
+                        permitindo navegação rápida para níveis anteriores.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Sites com estrutura hierárquica</li>
+                        <li>E-commerce (categoria > subcategoria > produto)</li>
+                        <li>Sistemas administrativos</li>
+                        <li>Documentação e wikis</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-3">
+                        <nav class="flex text-gray-500 dark:text-gray-400">
+                            <a href="#" class="hover:text-primary transition-colors">Home</a>
+                            <span class="mx-2">/</span>
+                            <a href="#" class="hover:text-primary transition-colors">Produtos</a>
+                            <span class="mx-2">/</span>
+                            <a href="#" class="hover:text-primary transition-colors">Eletrônicos</a>
+                            <span class="mx-2">/</span>
+                            <span class="text-gray-900 dark:text-gray-100 font-medium">Smartphone</span>
+                        </nav>
+
+                        <nav class="flex text-gray-500 dark:text-gray-400">
+                            <a href="#" class="hover:text-primary transition-colors">Dashboard</a>
+                            <span class="mx-2">></span>
+                            <a href="#" class="hover:text-primary transition-colors">Usuários</a>
+                            <span class="mx-2">></span>
+                            <span class="text-gray-900 dark:text-gray-100 font-medium">Editar Perfil</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <section id="pagination" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📄 Pagination</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Componente que divide conteúdo extenso em páginas menores, facilitando a navegação
+                        e melhorando a performance ao carregar apenas uma parte dos dados.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Listas com muitos itens</li>
+                        <li>Resultados de busca</li>
+                        <li>Tabelas com muitos registros</li>
+                        <li>Feeds de notícias ou posts</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-center space-x-1">
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">‹</button>
+                            <button class="px-3 py-1 bg-primary text-white rounded">1</button>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">2</button>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">3</button>
+                            <span class="px-2">...</span>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">10</button>
+                            <button class="px-3 py-1 border rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">›</button>
+                        </div>
+
+                        <div class="text-center text-sm text-gray-600 dark:text-gray-400">
+                            Mostrando 1-10 de 100 resultados
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toggle/Switch -->
+        <section id="toggle" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🔘 Toggle/Switch</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Controle que permite ao usuário alternar entre dois estados (ligado/desligado),
+                        fornecendo feedback visual imediato sobre o estado atual.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Configurações on/off</li>
+                        <li>Ativar/desativar funcionalidades</li>
+                        <li>Preferências do usuário</li>
+                        <li>Filtros binários</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span>Notificações</span>
+                            <button onclick="toggleSwitch('switch1')" id="switch1" class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary transition-colors">
+                                <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6"></span>
+                            </button>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <span>Modo Escuro</span>
+                            <button onclick="toggleSwitch('switch2')" id="switch2" class="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-300 transition-colors">
+                                <span class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slider/Range -->
+        <section id="slider" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🎚️ Slider/Range</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Controle que permite ao usuário selecionar um valor dentro de um intervalo específico,
+                        movendo um marcador ao longo de uma barra.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Controle de volume</li>
+                        <li>Filtros de preço</li>
+                        <li>Configurações de qualidade</li>
+                        <li>Seleção de datas ou idades</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Volume: <span id="volumeValue">50</span>%</label>
+                            <input type="range" id="volumeSlider" min="0" max="100" value="50"
+                                   class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                   oninput="updateSliderValue('volumeSlider', 'volumeValue', '%')">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Preço: R$ <span id="priceValue">500</span></label>
+                            <input type="range" id="priceSlider" min="0" max="1000" value="500"
+                                   class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                                   oninput="updateSliderValue('priceSlider', 'priceValue', '')">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Badges/Chips -->
+        <section id="badges" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🏷️ Badges</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Pequenos elementos visuais que exibem informações concisas como status,
+                        categorias, contadores ou tags de forma compacta e destacada.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Indicar status (novo, ativo, pendente)</li>
+                        <li>Mostrar contadores (notificações, mensagens)</li>
+                        <li>Tags e categorias</li>
+                        <li>Níveis ou hierarquias</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium mb-2">Status Badges:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Ativo</span>
+                                <span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Pendente</span>
+                                <span class="px-2 py-1 bg-red-100 text-red-800 text-xs rounded-full">Inativo</span>
+                                <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Novo</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium mb-2">Counter Badges:</h4>
+                            <div class="flex flex-wrap gap-4">
+                                <div class="relative">
+                                    <span class="text-2xl">📧</span>
+                                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                                </div>
+                                <div class="relative">
+                                    <span class="text-2xl">🔔</span>
+                                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stepper -->
+        <section id="stepper" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🪜 Stepper</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Componente que guia o usuário através de um processo multi-etapas,
+                        mostrando o progresso e permitindo navegação entre as etapas.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Formulários de múltiplas etapas</li>
+                        <li>Processo de checkout</li>
+                        <li>Instalação de software</li>
+                        <li>Onboarding de usuários</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-medium">1</div>
+                            <span class="ml-3 text-sm font-medium text-primary">Informações Pessoais</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-px h-6 bg-gray-300 ml-4"></div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-medium">2</div>
+                            <span class="ml-3 text-sm font-medium text-primary">Endereço</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-px h-6 bg-gray-300 ml-4"></div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-medium">3</div>
+                            <span class="ml-3 text-sm font-medium text-gray-500">Pagamento</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rating/Stars -->
+        <section id="rating" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">⭐ Rating/Stars</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Sistema de avaliação que permite aos usuários expressar sua opinião sobre produtos,
+                        serviços ou conteúdo através de estrelas ou outros símbolos.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Avaliação de produtos</li>
+                        <li>Feedback de serviços</li>
+                        <li>Qualificação de conteúdo</li>
+                        <li>Pesquisas de satisfação</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium mb-2">Avaliar Produto:</h4>
+                            <div class="flex space-x-1" id="ratingStars">
+                                <button onclick="setRating(1)" class="text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                                <button onclick="setRating(2)" class="text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                                <button onclick="setRating(3)" class="text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                                <button onclick="setRating(4)" class="text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                                <button onclick="setRating(5)" class="text-2xl text-gray-300 hover:text-yellow-400 transition-colors">★</button>
+                            </div>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1" id="ratingText">Clique para avaliar</p>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium mb-2">Avaliações Existentes:</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">★★★★★</div>
+                                    <span class="ml-2 text-sm">4.8 (127 avaliações)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="flex text-yellow-400">★★★☆☆</div>
+                                    <span class="ml-2 text-sm">3.2 (45 avaliações)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section id="timeline" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📅 Timeline</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Representação visual cronológica de eventos, mostrando uma sequência temporal
+                        de acontecimentos de forma organizada e fácil de entender.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Histórico de atividades</li>
+                        <li>Processo de status de pedidos</li>
+                        <li>Feed de notícias</li>
+                        <li>Linha do tempo de projetos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="relative">
+                        <div class="absolute left-4 top-0 bottom-0 w-px bg-gray-300"></div>
+
+                        <div class="relative flex items-start mb-6">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center z-10">
+                                <span class="text-white text-sm">✓</span>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Pedido Confirmado</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Seu pedido foi recebido e confirmado</p>
+                                <p class="text-xs text-gray-500">2 horas atrás</p>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-start mb-6">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center z-10">
+                                <span class="text-white text-sm">📦</span>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-medium">Em Preparação</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Produto sendo preparado para envio</p>
+                                <p class="text-xs text-gray-500">1 hora atrás</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carousel -->
+        <section id="carousel" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🎠 Carousel</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Componente que permite exibir múltiplos itens (imagens, cards, produtos)
+                        em um espaço limitado, com navegação horizontal através de controles.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Galeria de imagens</li>
+                        <li>Destaques na homepage</li>
+                        <li>Produtos em destaque</li>
+                        <li>Depoimentos de clientes</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="relative bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden">
+                        <div id="carouselContent" class="flex transition-transform duration-300 ease-in-out">
+                            <div class="w-full flex-shrink-0 p-8 text-center">
+                                <div class="w-16 h-16 bg-blue-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">🏠</div>
+                                <h4 class="font-medium">Slide 1</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Primeiro item do carousel</p>
+                            </div>
+                            <div class="w-full flex-shrink-0 p-8 text-center">
+                                <div class="w-16 h-16 bg-green-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">🎯</div>
+                                <h4 class="font-medium">Slide 2</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Segundo item do carousel</p>
+                            </div>
+                            <div class="w-full flex-shrink-0 p-8 text-center">
+                                <div class="w-16 h-16 bg-purple-500 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">⚡</div>
+                                <h4 class="font-medium">Slide 3</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Terceiro item do carousel</p>
+                            </div>
+                        </div>
+
+                        <button onclick="previousSlide()" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md hover:shadow-lg transition-shadow">‹</button>
+                        <button onclick="nextSlide()" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-full p-2 shadow-md hover:shadow-lg transition-shadow">›</button>
+
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <button onclick="goToSlide(0)" class="w-2 h-2 bg-primary rounded-full carousel-dot active"></button>
+                            <button onclick="goToSlide(1)" class="w-2 h-2 bg-gray-400 rounded-full carousel-dot"></button>
+                            <button onclick="goToSlide(2)" class="w-2 h-2 bg-gray-400 rounded-full carousel-dot"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search/Filter -->
+        <section id="search" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🔍 Search/Filter</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Funcionalidades que permitem aos usuários encontrar informações específicas
+                        rapidamente através de busca textual ou filtros categorizados.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Grandes volumes de dados</li>
+                        <li>E-commerce (busca de produtos)</li>
+                        <li>Listas e tabelas extensas</li>
+                        <li>Sistemas de documentação</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Buscar produtos..."
+                                   class="w-full pl-10 pr-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 text-base">
+                            <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">🔍</div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h4 class="font-medium">Filtros:</h4>
+                            <div class="grid grid-cols-2 gap-2">
+                                <select class="p-2 border rounded dark:bg-gray-700 dark:border-gray-600 text-base">
+                                    <option>Categoria</option>
+                                    <option>Eletrônicos</option>
+                                    <option>Roupas</option>
+                                    <option>Casa</option>
+                                </select>
+                                <select class="p-2 border rounded dark:bg-gray-700 dark:border-gray-600 text-base">
+                                    <option>Preço</option>
+                                    <option>Até R$ 100</option>
+                                    <option>R$ 100-500</option>
+                                    <option>Acima R$ 500</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sidebar -->
+        <section id="sidebar" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📌 Sidebar</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Painel lateral que contém navegação, filtros, informações complementares ou
+                        ferramentas, podendo ser fixo ou recolhível.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Navegação principal de aplicações</li>
+                        <li>Filtros avançados</li>
+                        <li>Informações de contexto</li>
+                        <li>Dashboards administrativos</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="relative border rounded-lg overflow-hidden" style="height: 200px;">
+                        <div id="sidebarDemo" class="absolute left-0 top-0 bottom-0 w-16 bg-primary text-white transition-all duration-300 z-10">
+                            <div class="p-4">
+                                <button onclick="toggleSidebar()" class="text-white hover:bg-primary-dark rounded p-1">☰</button>
+                                <div id="sidebarContent" class="hidden mt-4 space-y-2">
+                                    <a href="#" class="block py-2 px-3 hover:bg-primary-dark rounded text-sm">Dashboard</a>
+                                    <a href="#" class="block py-2 px-3 hover:bg-primary-dark rounded text-sm">Usuários</a>
+                                    <a href="#" class="block py-2 px-3 hover:bg-primary-dark rounded text-sm">Relatórios</a>
+                                    <a href="#" class="block py-2 px-3 hover:bg-primary-dark rounded text-sm">Configurações</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ml-16 p-4 bg-gray-100 dark:bg-gray-700 h-full">
+                            <h4 class="font-medium">Conteúdo Principal</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Esta é a área principal onde o conteúdo é exibido.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hamburger Menu -->
+        <section id="hamburger" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🍔 Hamburger Menu</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Ícone de menu representado por três linhas horizontais que, ao ser clicado,
+                        revela um menu de navegação, geralmente usado em dispositivos móveis.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Navegação mobile-first</li>
+                        <li>Economizar espaço em telas pequenas</li>
+                        <li>Menu principal em aplicações web</li>
+                        <li>Quando há muitas opções de menu</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="relative">
+                        <div class="bg-primary p-4 rounded-lg">
+                            <button onclick="toggleHamburgerMenu()" class="text-white">
+                                <div class="space-y-1.5">
+                                    <div class="w-6 h-0.5 bg-white"></div>
+                                    <div class="w-6 h-0.5 bg-white"></div>
+                                    <div class="w-6 h-0.5 bg-white"></div>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div id="hamburgerMenu" class="hidden mt-2 bg-white dark:bg-gray-700 border rounded-lg shadow-lg overflow-hidden">
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Home</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Sobre</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Serviços</a>
+                            <a href="#" class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">Contato</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Radio Buttons -->
+        <section id="radio" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🔘 Radio Buttons</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Botões de seleção que permitem ao usuário escolher apenas uma opção de um conjunto,
+                        sendo mutuamente exclusivos dentro do grupo.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Escolha única obrigatória</li>
+                        <li>Formulários de pesquisa</li>
+                        <li>Configurações de preferências</li>
+                        <li>Seleção de método de pagamento</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-3">
+                        <h4 class="font-medium">Escolha seu plano:</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="radio" name="plan" value="basic" class="w-4 h-4 text-primary">
+                                <span>Plano Básico - R$ 19,90/mês</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="radio" name="plan" value="pro" class="w-4 h-4 text-primary" checked>
+                                <span>Plano Pro - R$ 39,90/mês</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="radio" name="plan" value="enterprise" class="w-4 h-4 text-primary">
+                                <span>Plano Enterprise - R$ 99,90/mês</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkboxes -->
+        <section id="checkbox" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">✅ Checkboxes</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Caixas de seleção que permitem ao usuário escolher múltiplas opções de um conjunto,
+                        sendo independentes entre si.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Seleção múltipla de opções</li>
+                        <li>Aceitar termos e condições</li>
+                        <li>Filtros de busca</li>
+                        <li>Configurações com múltiplas escolhas</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-3">
+                        <h4 class="font-medium">Selecione seus interesses:</h4>
+                        <div class="space-y-2">
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 text-primary rounded" checked>
+                                <span>Desenvolvimento Web</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                                <span>Design UI/UX</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 text-primary rounded" checked>
+                                <span>Marketing Digital</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="checkbox" class="w-4 h-4 text-primary rounded">
+                                <span>Data Science</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Combobox/Autocomplete -->
+        <section id="combobox" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">🔤 Combobox/Autocomplete</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Campo de entrada que combina digitação livre com sugestões de opções,
+                        filtrando e exibindo resultados conforme o usuário digita.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Busca com sugestões</li>
+                        <li>Seleção de países/cidades</li>
+                        <li>Tags e categorias</li>
+                        <li>Campos com muitas opções</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="relative">
+                        <input type="text"
+                               id="comboboxInput"
+                               placeholder="Digite um país..."
+                               class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 text-base"
+                               oninput="filterCombobox()"
+                               onfocus="showComboboxOptions()">
+                        <div id="comboboxOptions" class="hidden absolute top-full left-0 w-full bg-white dark:bg-gray-700 border rounded shadow-lg mt-1 max-h-48 overflow-y-auto z-10">
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer combobox-option">Brasil</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer combobox-option">Estados Unidos</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer combobox-option">Portugal</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer combobox-option">Espanha</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer combobox-option">França</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer combobox-option">Alemanha</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Multiselect -->
+        <section id="multiselect" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📑 Multiselect</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Componente que permite selecionar múltiplos itens de uma lista,
+                        exibindo as seleções como tags removíveis.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Seleção de múltiplas categorias</li>
+                        <li>Atribuir tags a conteúdo</li>
+                        <li>Filtros avançados</li>
+                        <li>Seleção de destinatários</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div>
+                        <div class="border rounded-lg p-2 dark:bg-gray-700 dark:border-gray-600">
+                            <div id="selectedItems" class="flex flex-wrap gap-2 mb-2"></div>
+                            <input type="text"
+                                   placeholder="Selecione tecnologias..."
+                                   class="w-full outline-none bg-transparent text-base"
+                                   onfocus="showMultiselectOptions()"
+                                   id="multiselectInput">
+                        </div>
+                        <div id="multiselectOptions" class="hidden mt-2 bg-white dark:bg-gray-700 border rounded-lg shadow-lg max-h-48 overflow-y-auto">
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer multiselect-option" onclick="addMultiselectItem('React')">React</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer multiselect-option" onclick="addMultiselectItem('Vue')">Vue</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer multiselect-option" onclick="addMultiselectItem('Angular')">Angular</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer multiselect-option" onclick="addMultiselectItem('Node.js')">Node.js</div>
+                            <div class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer multiselect-option" onclick="addMultiselectItem('Python')">Python</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avatar -->
+        <section id="avatar" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">👤 Avatar</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que é?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Imagem ou ícone circular que representa um usuário ou entidade,
+                        podendo incluir iniciais, fotos ou ícones genéricos.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Perfis de usuários</li>
+                        <li>Comentários e mensagens</li>
+                        <li>Listas de membros</li>
+                        <li>Menu de navegação</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium mb-2">Tamanhos:</h4>
+                            <div class="flex items-center gap-4">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-xs">JD</div>
+                                <div class="w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center">MS</div>
+                                <div class="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center text-lg">AK</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-medium mb-2">Com Status:</h4>
+                            <div class="flex items-center gap-4">
+                                <div class="relative">
+                                    <div class="w-12 h-12 bg-purple-500 text-white rounded-full flex items-center justify-center">LM</div>
+                                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
+                                </div>
+                                <div class="relative">
+                                    <div class="w-12 h-12 bg-orange-500 text-white rounded-full flex items-center justify-center">RP</div>
+                                    <div class="absolute bottom-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Input Fields -->
+        <section id="inputs" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📝 Input Fields</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Campos de entrada de dados que permitem ao usuário inserir diferentes tipos de informações,
+                        como texto, números, datas, etc.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Formulários de cadastro</li>
+                        <li>Busca e filtros</li>
+                        <li>Configurações e preferências</li>
+                        <li>Entrada de dados em geral</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Nome completo</label>
+                            <input type="text" placeholder="Digite seu nome" class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 text-base">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Email</label>
+                            <input type="email" placeholder="seu@email.com" class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 text-base">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Data de nascimento</label>
+                            <input type="date" class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 text-base">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Senha</label>
+                            <input type="password" placeholder="••••••••" class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 text-base">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tables -->
+        <section id="tables" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📊 Tables</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Estruturas organizadas em linhas e colunas para exibir dados tabulares de forma clara e escaneável,
+                        facilitando a comparação de informações.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Listas de dados estruturados</li>
+                        <li>Relatórios e dashboards</li>
+                        <li>Comparação de informações</li>
+                        <li>Administração de registros</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-primary text-white">
+                                    <th class="px-4 py-2 text-left">Nome</th>
+                                    <th class="px-4 py-2 text-left">Status</th>
+                                    <th class="px-4 py-2 text-right">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-gray-700">
+                                <tr class="border-b dark:border-gray-600">
+                                    <td class="px-4 py-2">João Silva</td>
+                                    <td class="px-4 py-2"><span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Ativo</span></td>
+                                    <td class="px-4 py-2 text-right">R$ 1.250</td>
+                                </tr>
+                                <tr class="border-b dark:border-gray-600">
+                                    <td class="px-4 py-2">Maria Santos</td>
+                                    <td class="px-4 py-2"><span class="px-2 py-1 bg-yellow-100 text-yellow-800 text-xs rounded">Pendente</span></td>
+                                    <td class="px-4 py-2 text-right">R$ 850</td>
+                                </tr>
+                                <tr class="border-b dark:border-gray-600">
+                                    <td class="px-4 py-2">Pedro Costa</td>
+                                    <td class="px-4 py-2"><span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">Ativo</span></td>
+                                    <td class="px-4 py-2 text-right">R$ 2.100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Context Menus (Kebab/Meatballs) -->
+        <section id="menus" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">⋮ Context Menus</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">O que são?</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">
+                        Menus compactos acessados através de ícones (três pontos verticais ou horizontais)
+                        que revelam ações contextuais relacionadas a um item específico.
+                    </p>
+                    <h4 class="font-semibold mb-2">Quando usar:</h4>
+                    <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+                        <li>Ações secundárias em cards ou listas</li>
+                        <li>Economizar espaço na interface</li>
+                        <li>Opções de editar/excluir/compartilhar</li>
+                        <li>Menu de configurações rápidas</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white dark:bg-gray-700 p-4 rounded-lg border flex justify-between items-center">
+                            <div>
+                                <h4 class="font-medium">Documento.pdf</h4>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Atualizado há 2 horas</p>
+                            </div>
+                            <div class="relative">
+                                <button onclick="toggleContextMenu('menu1')" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded">
+                                    <div class="flex flex-col space-y-1">
+                                        <div class="w-1 h-1 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
+                                        <div class="w-1 h-1 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
+                                        <div class="w-1 h-1 bg-gray-600 dark:bg-gray-400 rounded-full"></div>
+                                    </div>
+                                </button>
+                                <div id="menu1" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 border rounded-lg shadow-lg z-10">
+                                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Baixar</button>
+                                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Compartilhar</button>
+                                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Renomear</button>
+                                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-500">Excluir</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		<!-- Chips (Interactive Tags) -->
+		<section id="chips" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+			<h2 class="text-2xl font-bold mb-4 text-primary">🏷️ Chips (Tags Interativos)</h2>
+			<div class="grid md:grid-cols-2 gap-6">
+				<div>
+					<h3 class="text-lg font-semibold mb-2">O que são?</h3>
+					<p class="text-gray-700 dark:text-gray-300 mb-4">
+						Tags interativos que podem ser clicados, selecionados ou removidos,
+						representando filtros, categorias ou seleções do usuário.
+					</p>
+					<h4 class="font-semibold mb-2">Quando usar:</h4>
+					<ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-1">
+						<li>Filtros ativos</li>
+						<li>Tags de conteúdo</li>
+						<li>Seleções em multiselect</li>
+						<li>Categorias clicáveis</li>
+					</ul>
+				</div>
+				<div>
+					<h3 class="text-lg font-semibold mb-2">Exemplo Prático:</h3>
+					<div class="space-y-4">
+						<div>
+							<h4 class="font-medium mb-2">Chips removíveis:</h4>
+							<div class="flex flex-wrap gap-2" id="removableChips">
+								<span class="chip-removable px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm flex items-center">
+									Design
+									<button onclick="removeChip(this)" class="ml-2 hover:text-blue-900 font-bold">×</button>
+								</span>
+								<span class="chip-removable px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm flex items-center">
+									Desenvolvimento
+									<button onclick="removeChip(this)" class="ml-2 hover:text-green-900 font-bold">×</button>
+								</span>
+								<span class="chip-removable px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm flex items-center">
+									Marketing
+									<button onclick="removeChip(this)" class="ml-2 hover:text-purple-900 font-bold">×</button>
+								</span>
+							</div>
+						</div>
+
+						<div>
+							<h4 class="font-medium mb-2">Chips selecionáveis:</h4>
+							<div class="flex flex-wrap gap-2">
+								<button onclick="toggleChip(this)" class="chip-selectable px-3 py-1 border-2 border-primary bg-primary text-white rounded-full text-sm hover:bg-primary-dark transition-colors">React</button>
+								<button onclick="toggleChip(this)" class="chip-selectable px-3 py-1 border-2 border-gray-300 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:border-primary hover:text-primary transition-colors">Vue</button>
+								<button onclick="toggleChip(this)" class="chip-selectable px-3 py-1 border-2 border-gray-300 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:border-primary hover:text-primary transition-colors">Angular</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Resources Table -->
+        <section id="resources" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-primary">📚 Recursos e Bibliotecas de Componentes</h2>
+            <p class="text-gray-700 dark:text-gray-300 mb-6">
+                Explore estas bibliotecas e galerias para encontrar mais exemplos de componentes UI/UX e inspiração para seus projetos.
+            </p>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse bg-white dark:bg-gray-700 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th class="px-6 py-3 text-left font-semibold">Recurso</th>
+                            <th class="px-6 py-3 text-left font-semibold">Descrição</th>
+                            <th class="px-6 py-3 text-left font-semibold">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- The Component Gallery -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🧩</span>
+                                    <span class="font-semibold">The Component Gallery</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Uma galeria atualizada com exemplos de componentes de interface baseados em sistemas de design.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://component.gallery" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+                        
+                        <!-- Landingfolio -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🌐</span>
+                                    <span class="font-semibold">Landingfolio</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Uma vasta biblioteca com mais de 4.650 exemplos de componentes de UI e páginas de destino.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://landingfolio.com" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+                        
+                        <!-- Uiverse -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🎨</span>
+                                    <span class="font-semibold">Uiverse</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Uma biblioteca comunitária de elementos de UI gratuitos e personalizáveis, disponíveis em HTML/CSS, Tailwind, React e Figma.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://uiverse.io" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+                        
+                        <!-- Material Design Components -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">📐</span>
+                                    <span class="font-semibold">Material Design Components</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Componentes interativos para criar interfaces de usuário, organizados por categoria.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://m3.material.io/components" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- UI Patterns -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🔲</span>
+                                    <span class="font-semibold">UI Patterns</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Uma coleção de padrões de interface e componentes reutilizáveis.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://ui-patterns.com/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- CSS-Tricks Snippets -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">💻</span>
+                                    <span class="font-semibold">CSS-Tricks Snippets</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Vários exemplos de componentes UI em HTML/CSS.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://css-tricks.com/snippets/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Codrops -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">✨</span>
+                                    <span class="font-semibold">Codrops</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Inspiração e tutoriais de componentes interativos, animações e efeitos UI.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://tympanus.net/codrops/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- React Bootstrap -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">⚛️</span>
+                                    <span class="font-semibold">React Bootstrap</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Biblioteca de componentes para React baseada no Bootstrap.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://react-bootstrap.github.io/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Tailwind UI -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🎯</span>
+                                    <span class="font-semibold">Tailwind UI</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Componentes prontos feitos com Tailwind CSS.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://tailwindui.com/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Flowbite -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🌊</span>
+                                    <span class="font-semibold">Flowbite</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Componentes e blocos UI baseados em Tailwind CSS.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://flowbite.com/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Shadcn/UI -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🎭</span>
+                                    <span class="font-semibold">Shadcn/UI</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Componentes acessíveis para React e Tailwind com estrutura modular.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://ui.shadcn.com/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Figma Community -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🎨</span>
+                                    <span class="font-semibold">Figma Community</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Templates, kits e componentes de UI prontos para design visual.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://www.figma.com/community" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Storybook -->
+                        <tr class="border-b dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">📖</span>
+                                    <span class="font-semibold">Storybook</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Ferramenta para construir, documentar e testar componentes UI isoladamente.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://storybook.js.org/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+
+                        <!-- Material-UI (MUI) -->
+                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <td class="px-6 py-4">
+                                <div class="flex items-center">
+                                    <span class="text-2xl mr-3">🔷</span>
+                                    <span class="font-semibold">Material-UI (MUI)</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                                Componentes React seguindo as diretrizes do Material Design.
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="https://mui.com/" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">
+                                    Visitar
+                                    <span class="ml-2">→</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
+                <p class="text-sm text-blue-800 dark:text-blue-200">
+                    💡 <strong>Dica:</strong> Estes recursos são excelentes para estudar padrões de design, encontrar inspiração e aprender melhores práticas de UI/UX.
+                </p>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
+
+    <!-- Modal Container -->
+    <div id="modalOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div id="modalContent" class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full modal-animation">
+            <!-- Modal content will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Global Tooltip -->
+	<!-- DEPOIS -->
+	<div id="globalTooltip" class="fixed bg-gray-900 dark:bg-gray-700 text-white text-sm rounded py-2 px-3 z-50 hidden pointer-events-none shadow-lg max-w-xs"></div>
+
+
+
+    <script>
+        // Global variables
+        let currentSlide = 0;
+        const totalSlides = 3;
+        let selectedMultiselectItems = [];
+
+        // Dark mode setup
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+		// Sincroniza o toggle com o estado do dark mode ao carregar
+		window.addEventListener('DOMContentLoaded', function() {
+			const darkMode = localStorage.getItem('darkMode') === 'true' || 
+							 (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+			
+			const switch2 = document.getElementById('switch2');
+			const toggle2 = switch2.querySelector('span');
+			
+			if (darkMode) {
+				document.documentElement.classList.add('dark');
+				toggle2.classList.remove('translate-x-1');
+				toggle2.classList.add('translate-x-6');
+				switch2.classList.remove('bg-gray-300');
+				switch2.classList.add('bg-primary');
+			}
+		});
+
+        // Scroll to section
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Toast functionality
+        function showToast(type, title, message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+
+            const colors = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                warning: 'bg-yellow-500'
+            };
+
+            toast.className = `${colors[type]} text-white p-4 rounded-lg shadow-lg max-w-sm toast-animation`;
+            toast.innerHTML = `
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="font-semibold">${title}</div>
+                        <div class="text-sm">${message}</div>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">×</button>
+                </div>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.remove();
+                }
+            }, 5000);
+        }
+
+        // Modal functionality
+        function showModal(type) {
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+
+            const modals = {
+                confirm: `
+                    <h2 class="text-xl font-bold mb-4">Confirmar Ação</h2>
+                    <p class="mb-6 text-gray-700 dark:text-gray-300">Tem certeza que deseja excluir este item? Esta ação não pode ser desfeita.</p>
+                    <div class="flex space-x-2 justify-end">
+                        <button onclick="closeModal()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors">Cancelar</button>
+                        <button onclick="closeModal()" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">Excluir</button>
+                    </div>
+                `,
+                form: `
+                    <h2 class="text-xl font-bold mb-4">Novo Usuario</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Nome</label>
+                            <input type="text" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 text-base" placeholder="Digite o nome">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Email</label>
+                            <input type="email" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600 text-base" placeholder="Digite o email">
+                        </div>
+                        <div class="flex space-x-2 justify-end">
+                            <button type="button" onclick="closeModal()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors">Cancelar</button>
+                            <button type="submit" onclick="closeModal()" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">Salvar</button>
+                        </div>
+                    </form>
+                `,
+                info: `
+                    <h2 class="text-xl font-bold mb-4">Informação</h2>
+                    <p class="mb-6 text-gray-700 dark:text-gray-300">Este é um modal informativo que pode conter qualquer tipo de conteúdo, como texto, imagens, vídeos ou outros elementos.</p>
+                    <div class="flex justify-end">
+                        <button onclick="closeModal()" class="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark transition-colors">Entendi</button>
+                    </div>
+                `
+            };
+
+            content.innerHTML = modals[type];
+            overlay.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.add('hidden');
+        }
+
+        // Dropdown functionality
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function selectOption(option) {
+            document.getElementById('dropdownBtn').innerHTML = `${option} <span class="ml-2">▼</span>`;
+            document.getElementById('dropdownMenu').classList.add('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('dropdownMenu');
+            const button = document.getElementById('dropdownBtn');
+            if (button && !button.contains(event.target) && dropdown && !dropdown.contains(event.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+		// Tooltip functionality - Executa depois que o DOM carregar
+		function initTooltips() {
+			document.querySelectorAll('.tooltip-trigger').forEach(element => {
+				element.addEventListener('mouseenter', function(e) {
+					const tooltip = document.getElementById('globalTooltip');
+					const text = this.getAttribute('data-tooltip');
+					
+					if (!text) return;
+					
+					// Define o conteúdo com a setinha
+					tooltip.innerHTML = `
+						<span class="relative z-10">${text}</span>
+						<div class="absolute w-3 h-3 bg-gray-900 dark:bg-gray-700 transform rotate-45 -bottom-1.5 left-1/2 -translate-x-1/2"></div>
+					`;
+					
+					// Mostra o tooltip
+					tooltip.classList.remove('hidden');
+					
+					// Calcula posição
+					const rect = this.getBoundingClientRect();
+					const left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2);
+					const top = rect.top - tooltip.offsetHeight - 10;
+					
+					tooltip.style.left = Math.max(10, left) + 'px';
+					tooltip.style.top = Math.max(10, top) + 'px';
+				});
+				
+				element.addEventListener('mouseleave', function() {
+					const tooltip = document.getElementById('globalTooltip');
+					tooltip.classList.add('hidden');
+				});
+			});
+		}
+
+// Chama a função quando a página carregar
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTooltips);
+} else {
+    initTooltips();
+}
+
+        // Accordion functionality
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(id + '-icon');
+
+            content.classList.toggle('hidden');
+            icon.textContent = content.classList.contains('hidden') ? '+' : '-';
+        }
+
+        // Tabs functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+
+            // Remove active state from all buttons
+            document.querySelectorAll('[id$="-btn"]').forEach(btn => {
+                btn.className = 'px-4 py-2 text-gray-600 hover:text-primary transition-colors';
+            });
+
+            // Show selected tab and mark button as active
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId + '-btn').className = 'px-4 py-2 border-b-2 border-primary text-primary font-semibold';
+        }
+
+        // Progress animation
+        function animateProgress() {
+            const progressBar = document.querySelector('.bg-primary.h-2');
+            const progressText = document.querySelector('.text-sm.font-medium + .text-sm.font-medium');
+            let width = 0;
+
+            const interval = setInterval(() => {
+                width += 2;
+                progressBar.style.width = width + '%';
+                progressText.textContent = width + '%';
+
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        width = 45;
+                        progressBar.style.width = '45%';
+                        progressText.textContent = '45%';
+                    }, 1000);
+                }
+            }, 50);
+        }
+
+        // Loading simulation
+        function toggleLoading() {
+            const btn = document.getElementById('loadingBtn');
+            const isLoading = btn.innerHTML.includes('spinner');
+
+            if (isLoading) {
+                btn.innerHTML = 'Simular Loading';
+                btn.disabled = false;
+            } else {
+                btn.innerHTML = '<div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full spinner mr-2"></div> Carregando...';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    btn.innerHTML = 'Simular Loading';
+                    btn.disabled = false;
+                }, 3000);
+            }
+        }
+
+		// Toggle switch functionality
+		function toggleSwitch(switchId) {
+			const switchElement = document.getElementById(switchId);
+			const toggle = switchElement.querySelector('span');
+
+			if (toggle.classList.contains('translate-x-6')) {
+				toggle.classList.remove('translate-x-6');
+				toggle.classList.add('translate-x-1');
+				switchElement.classList.remove('bg-primary');
+				switchElement.classList.add('bg-gray-300');
+				
+				// Se for o switch de dark mode, desativa
+				if (switchId === 'switch2') {
+					document.documentElement.classList.remove('dark');
+					localStorage.setItem('darkMode', 'false');
+				}
+			} else {
+				toggle.classList.remove('translate-x-1');
+				toggle.classList.add('translate-x-6');
+				switchElement.classList.remove('bg-gray-300');
+				switchElement.classList.add('bg-primary');
+				
+				// Se for o switch de dark mode, ativa
+				if (switchId === 'switch2') {
+					document.documentElement.classList.add('dark');
+					localStorage.setItem('darkMode', 'true');
+				}
+			}
+		}
+
+        // Slider functionality
+        function updateSliderValue(sliderId, valueId, suffix) {
+            const slider = document.getElementById(sliderId);
+            const valueDisplay = document.getElementById(valueId);
+            valueDisplay.textContent = slider.value + suffix;
+        }
+
+        // Rating functionality
+        function setRating(rating) {
+            const stars = document.querySelectorAll('#ratingStars button');
+            const ratingText = document.getElementById('ratingText');
+
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('text-gray-300');
+                    star.classList.add('text-yellow-400');
+                } else {
+                    star.classList.remove('text-yellow-400');
+                    star.classList.add('text-gray-300');
+                }
+            });
+
+            const messages = ['', 'Muito Ruim', 'Ruim', 'Regular', 'Bom', 'Excelente'];
+            ratingText.textContent = `${rating} estrela${rating > 1 ? 's' : ''} - ${messages[rating]}`;
+        }
+
+        // Carousel functionality
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(slide) {
+            currentSlide = slide;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const content = document.getElementById('carouselContent');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            content.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-gray-400');
+                    dot.classList.add('bg-primary');
+                } else {
+                    dot.classList.remove('bg-primary');
+                    dot.classList.add('bg-gray-400');
+                }
+            });
+        }
+
+        // Sidebar functionality
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebarDemo');
+            const content = document.getElementById('sidebarContent');
+
+            if (sidebar.classList.contains('w-16')) {
+                sidebar.classList.remove('w-16');
+                sidebar.classList.add('w-48');
+                content.classList.remove('hidden');
+            } else {
+                sidebar.classList.remove('w-48');
+                sidebar.classList.add('w-16');
+                content.classList.add('hidden');
+            }
+        }
+
+        // Hamburger menu functionality
+        function toggleHamburgerMenu() {
+            const menu = document.getElementById('hamburgerMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Combobox functionality
+        function showComboboxOptions() {
+            document.getElementById('comboboxOptions').classList.remove('hidden');
+        }
+
+        function filterCombobox() {
+            const input = document.getElementById('comboboxInput').value.toLowerCase();
+            const options = document.querySelectorAll('.combobox-option');
+
+            options.forEach(option => {
+                const text = option.textContent.toLowerCase();
+                if (text.includes(input)) {
+                    option.style.display = 'block';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        }
+
+        // Combobox option selection
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('combobox-option')) {
+                document.getElementById('comboboxInput').value = e.target.textContent;
+                document.getElementById('comboboxOptions').classList.add('hidden');
+            }
+        });
+
+        // Close combobox when clicking outside
+        document.addEventListener('click', function(event) {
+            const comboboxInput = document.getElementById('comboboxInput');
+            const comboboxOptions = document.getElementById('comboboxOptions');
+            if (comboboxInput && comboboxOptions && !comboboxInput.contains(event.target) && !comboboxOptions.contains(event.target)) {
+                comboboxOptions.classList.add('hidden');
+            }
+        });
+
+        // Multiselect functionality
+        function showMultiselectOptions() {
+            document.getElementById('multiselectOptions').classList.remove('hidden');
+        }
+
+        function addMultiselectItem(item) {
+            if (!selectedMultiselectItems.includes(item)) {
+                selectedMultiselectItems.push(item);
+                updateMultiselectDisplay();
+            }
+        }
+
+        function removeMultiselectItem(item) {
+            selectedMultiselectItems = selectedMultiselectItems.filter(i => i !== item);
+            updateMultiselectDisplay();
+        }
+
+        function updateMultiselectDisplay() {
+            const container = document.getElementById('selectedItems');
+            container.innerHTML = '';
+
+            selectedMultiselectItems.forEach(item => {
+                const tag = document.createElement('span');
+                tag.className = 'px-2 py-1 bg-primary text-white text-sm rounded flex items-center';
+                tag.innerHTML = `
+                    ${item}
+                    <button onclick="removeMultiselectItem('${item}')" class="ml-2 hover:text-gray-200">×</button>
+                `;
+                container.appendChild(tag);
+            });
+        }
+
+        // Close multiselect when clicking outside
+        document.addEventListener('click', function(event) {
+            const multiselectInput = document.getElementById('multiselectInput');
+            const multiselectOptions = document.getElementById('multiselectOptions');
+            const selectedItems = document.getElementById('selectedItems');
+
+            if (multiselectInput && multiselectOptions &&
+                !multiselectInput.contains(event.target) &&
+                !multiselectOptions.contains(event.target) &&
+                !selectedItems.contains(event.target)) {
+                multiselectOptions.classList.add('hidden');
+            }
+        });
+
+        // Context menu functionality
+        function toggleContextMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            menu.classList.toggle('hidden');
+        }
+
+        // Close context menus when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('button')) {
+                document.querySelectorAll('[id^="menu"]').forEach(menu => {
+                    if (!menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                    }
+                });
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
